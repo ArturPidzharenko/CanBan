@@ -4,16 +4,16 @@
             <div class="list-group" data-list="0">
                 <h2 class="list-group__name list-group__name--onhold">ON-HOLD</h2>
                 <div class="list-group__block" >
-                    <div data-list="0" data v-for="(item, index) in listOne" :key="item.id"  class="list-group-item list-group-item-action list-group__item">
+                    <div data-list="0" data v-for="(item, index) in this.listOne" :key="item.id"  class="list-group-item list-group-item-action list-group__item">
                         <div class="form-group">
-                            <textarea class="form-control form-group__textarea"></textarea>
+                            <textarea v-model="item.text" class="form-control form-group__textarea"></textarea>
                         </div>
-                        <button @click="deleteItemListOne(index)" class="form-group__button form-group__button--close">+</button> 
+                        <button @click="deleteItemListOne(index)" class="form-group__button form-group__button--close">+</button>
                         <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__top"></div>
-                        <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__bottom"></div>                  
+                        <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__bottom"></div>
                     </div>
                 </div>
-                <button @click="addItemListOne" class="form-group__button form-group__button--addition"><span>+</span> Добавить задачу</button> 
+                <button @click="addItemListOne" class="form-group__button form-group__button--addition"><span>+</span> Добавить задачу</button>
             </div>
         </div>
         <div class="col- col-sm-12 col-md-3 col-lg-3 col-xl-3 taskbar__list">
@@ -22,14 +22,14 @@
                 <div class="list-group__block">
                     <div data-list="1" v-for="(item, index) in listTwo" :key="item.id" class="list-group-item list-group-item-action list-group__item">
                         <div class="form-group">
-                            <textarea class="form-control form-group__textarea" ></textarea>
+                            <textarea v-model="item.text" class="form-control form-group__textarea"></textarea>
                         </div>
-                        <button @click="deleteItemListTwo(index)" class="form-group__button form-group__button--close" onselectstart="return false">+</button>     
+                        <button @click="deleteItemListTwo(index)" class="form-group__button form-group__button--close" onselectstart="return false">+</button>
                         <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__top"></div>
-                        <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__bottom"></div>                 
+                        <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__bottom"></div>
                     </div>
                 </div>
-                <button @click="addItemListTwo" class="form-group__button form-group__button--addition"><span>+</span> Добавить задачу</button> 
+                <button @click="addItemListTwo" class="form-group__button form-group__button--addition"><span>+</span> Добавить задачу</button>
             </div>
         </div>
             <div class="col- col-sm-12 col-md-3 col-lg-3 col-xl-3 taskbar__list">
@@ -38,36 +38,37 @@
                     <div class="list-group__block">
                         <div data-list="2" v-for="(item, index) in listThree" :key="item.id" class="list-group-item list-group-item-action list-group__item">
                             <div class="form-group">
-                                <textarea class="form-control form-group__textarea"></textarea>
+                                <textarea v-model="item.text" class="form-control form-group__textarea"></textarea>
                             </div>
-                            <button class="form-group__button form-group__button--close" >+</button>                   
+                            <button @click="deleteItemListThree(index)" class="form-group__button form-group__button--close" onselectstart="return false">+</button>
+                            <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__top"></div>
+                            <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__bottom"></div>
                         </div>
                     </div>
-                    <button class="form-group__button form-group__button--addition"><span>+</span> Добавить задачу</button>
-                    <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__top"></div>
-                    <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__bottom"></div>  
+                    <button @click="addItemListThree" class="form-group__button form-group__button--addition"><span>+</span> Добавить задачу</button>
                 </div>
             </div>
             <div class="col- col-sm-12 col-md-3 col-lg-3 col-xl-3 taskbar__list">
                 <div class="list-group" data-list="3">
                     <h2 class="list-group__name list-group__name--approved">APPROVED</h2>
                     <div class="list-group__block">
-                        <div data-list="3" v-for="(item, index) in listThree" :key="item.id" class="list-group-item list-group-item-action list-group__item">
+                        <div data-list="3" v-for="(item, index) in listFour" :key="item.id" class="list-group-item list-group-item-action list-group__item">
                             <div class="form-group">
-                                <textarea class="form-control form-group__textarea"></textarea>
+                                <textarea v-model="item.text" class="form-control form-group__textarea"></textarea>
                             </div>
-                            <button class="form-group__button form-group__button--close">+</button>                   
+                            <button @click="deleteItemListFour(index)" class="form-group__button form-group__button--close" onselectstart="return false">+</button>
+                            <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__top"></div>
+                            <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__bottom"></div>
                         </div>
                     </div>
-                    <button class="form-group__button form-group__button--addition"><span>+</span> Добавить задачу</button>
-                    <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__top"></div>
-                    <div @mousedown="dragAndDropItem($event, index)" @touchstart="dragAndDropItem($event, index)" class="list-group__bottom"></div> 
+                    <button @click="addItemListFour" class="form-group__button form-group__button--addition"><span>+</span> Добавить задачу</button>
                 </div>
             </div>
-        </div>    
+        </div>
 </template>
 
 <script>
+    import Vue from 'vue'
     import { mapState } from 'vuex';
     import { mapMutations } from 'vuex';
     import { mapActions } from 'vuex';
@@ -77,42 +78,95 @@
 		data() {
 			return {
                 id: 0,
+                text: ""
 			}
         },
-        
+
         computed: {
             ...mapState([
                 "listOne",
                 "listTwo",
                 "listThree",
-                "listFour"       
+                "listFour"
             ]),
-            
+
         },
+
+        mounted () {
+            this.ListOne();
+            this.ListTwo();
+            this.ListThree();
+            this.ListFour();
+        },
+
 		methods: {
             ...mapMutations([
-               
+                "ListOne",
+                "ListTwo",
+                "ListThree",
+                "ListFour"
             ]),
             ...mapActions([
-               
+
             ]),
 
             addItemListOne (e) {
                 this.id++;
-                this.listOne.push({id:this.id});
+                this.listOne.push({id:this.id, text:""});
+                const parsed = JSON.stringify(this.listOne);
+                localStorage.setItem('list0', parsed); 
             },
 
             addItemListTwo() {
                 this.id++;
-                this.listTwo.push({id:this.id});
+                this.listTwo.push({id:this.id, text:""});
+                const parsed = JSON.stringify(this.listTwo);
+                localStorage.setItem('list1', parsed); 
+            },
+
+            addItemListThree (e) {
+                this.id++;
+                this.listThree.push({id:this.id, text:""});
+                const parsed = JSON.stringify(this.listThree);
+                localStorage.setItem('list2', parsed); 
+            },
+
+            addItemListFour (e) {
+                this.id++;
+                this.listFour.push({id:this.id, text:""});
+                const parsed = JSON.stringify(this.listFour);
+                localStorage.setItem('list3', parsed);
             },
 
             deleteItemListOne (index) {
-                this.listOne.splice(index, 1)
+                this.listOne.splice(index, 1);
+                const parsed = JSON.stringify(this.listOne);
+                localStorage.setItem('list0', parsed);  
             },
 
             deleteItemListTwo (index) {
-                this.listTwo.splice(index, 1)
+                this.listTwo.splice(index, 1);
+                const parsed = JSON.stringify(this.listTwo);
+                localStorage.setItem('list1', parsed); 
+            },
+
+            deleteItemListThree (index) {
+                this.listThree.splice(index, 1);
+                const parsed = JSON.stringify(this.listThree);
+                localStorage.setItem('list2', parsed); 
+            },
+
+            deleteItemListFour (index) {
+                this.listFour.splice(index, 1);
+                const parsed = JSON.stringify(this.listFour);
+                localStorage.setItem('list3', parsed);
+            },
+
+            saveList (lists) {
+                for (let index = 0; index < lists.length; index++) {
+                    const parsed = JSON.stringify(lists[index]);
+                    localStorage.setItem('list' + index, parsed);    
+                }
             },
 
             dragAndDropItem (e, index) {
@@ -120,11 +174,11 @@
 
                 block      = e.target.parentNode;
                 widthBlock = block.offsetWidth;
-                
+
                 if (e.which == 3 || !block.classList.contains('list-group__item')) {
                     return;
                 }
-                    
+
                 let findDroppable = () => {
                     block.hidden = true;
                     element      = document.elementFromPoint(event.clientX || e.targetTouches[0].pageX, event.clientY || e.targetTouches[0].pageY);
@@ -154,7 +208,9 @@
 
                     findDroppable();
                     moveAt(e);
-                } 
+                }
+
+
 
                 let stop = () => {
                     document.removeEventListener("mousemove", move);
@@ -162,29 +218,37 @@
                     document.removeEventListener("mouseup", stop);
                     document.removeEventListener("touchcend", stop);
 
-                    let lists, numberList, numberListDraggedItem, isTop, isBottom;
-                        
+                    let lists, numberList, numberListDraggedItem, top, bottom, isTop, isBottom, textarea;
+
+                    top      = block.querySelector(".list-group__top");
+                    bottom   = block.querySelector(".list-group__bottom");
+                    textarea = block.querySelector(".form-group__textarea");
+
+                    if (element === undefined) {
+                        top.style.display = "none";
+                        bottom.style.display = "none";
+                        block.querySelector(".form-group__textarea").focus();
+                        return;
+                    }
+
                     lists                 = [this.listOne, this.listTwo, this.listThree, this.listFour];
                     numberList            = element.parentNode.getAttribute("data-list");
                     numberListDraggedItem = block.getAttribute("data-list");
-                    
+
                     if (element.parentNode.classList.contains('list-group')) {
+
                         if (element.classList.contains('form-group__button')) {
                             lists[numberList].push(lists[numberListDraggedItem][index]);
-                            lists[numberListDraggedItem].splice(index, 1)
+                            lists[numberListDraggedItem].splice(index, 1);
                         }
 
                         if (element.classList.contains('list-group__name')) {
                             lists[numberList].unshift(lists[numberListDraggedItem][index]);
                             lists[numberListDraggedItem].splice(index, 1)
                         }
-                        
-                        console.log(this.listOne);
-                        console.log(this.listTwo);
-                        
                     }
 
-                    isTop = element.classList.contains('list-group__top');
+                    isTop    = element.classList.contains('list-group__top');
                     isBottom = element.classList.contains('list-group__bottom');
 
                     if (isTop || isBottom) {
@@ -196,30 +260,38 @@
                         childrenIndex = nodes.indexOf(element.parentNode);
 
                         if (isBottom) {
-                            childrenIndex += 1; 
+                            childrenIndex += 1;
                         }
 
                         lists[numberList].splice(childrenIndex, 0, lists[numberListDraggedItem][index]);
                         lists[numberListDraggedItem].splice(index, 1);
 
-                        console.log(this.listOne);
-                        console.log(this.listTwo);; 
-
                     }
+
+                    this.saveList(lists);
+                }
+
+                let deleteFocus = (e) => {
+                    block.querySelector(".list-group__top").style.display = "block";
+                    block.querySelector(".list-group__bottom").style.display = "block";
+                    block.querySelector(".form-group__textarea").blur();
+
                 }
 
                 document.addEventListener("mousemove", move);
                 document.addEventListener("touchmove", move);
-                
+                block.querySelector(".form-group__textarea").addEventListener("mouseleave", deleteFocus);
+
                 document.addEventListener("mouseup", stop);
                 document.addEventListener("touchcend", stop);
+                block.querySelector(".form-group__textarea").addEventListener("touchleave", deleteFocus);
             }
 		}
-    }	
+    }
 </script>
 
 <style scope>
-    
+
     .taskbar {
         margin-top: 50px;
         margin-bottom: 50px;
@@ -266,7 +338,7 @@
     .list-group__block::-webkit-scrollbar-thumb {
        background: white;
     }
-    
+
     .list-group__scroll {
         overflow-y: scroll;
         overflow-x: hidden;
@@ -274,8 +346,8 @@
     }
     .list-group__name {
         font-size: 1.4rem;
-        padding: 5px; 
-        padding-left: 15px; 
+        padding: 5px;
+        padding-left: 15px;
         color: white;
         margin: 0;
     }
@@ -295,10 +367,10 @@
         background: #2b2d33;
     }
     .list-group__item .form-group {
-        margin-bottom: 0px; 
+        margin-bottom: 0px;
     }
     .list-group__item .form-group:last-child {
-        margin-bottom: 1rem; 
+        margin-bottom: 1rem;
     }
     .list-group__item .form-group__textarea,
     .list-group__item .form-group__textarea:active {
@@ -306,7 +378,7 @@
         background: #1c1d20;
         color: white;
         box-shadow: none;
-        border-color: transparent; 
+        border-color: transparent;
     }
     .list-group__item .form-group__textarea:hover, .list-group__item .form-group__textarea:focus {
         border-color: white;
@@ -341,7 +413,7 @@
         color: white;
         font-weight: bold;
         font-size: 16px;
-        z-index: 10; 
+        z-index: 10;
         background: #2b2d33;
 
     }
@@ -355,7 +427,7 @@
         color: #61bd4f;
     }
 
-    @media (max-width: 768px) { 
+    @media (max-width: 768px) {
         .taskbar__list {
             display: flex;
             flex-direction: column;
